@@ -7,8 +7,31 @@
     box-sizing: border-box;
 }
 
+a:link {
+    color: white;
+}
+a:visited {
+    color: lightgray;
+}
+a:hover {
+    color: hotpink;
+}
+a:active {
+    color: black;
+}
+
+:root {
+    --page-bg: #474e5d;
+    --ruler-bg: white;
+    --circle-core: white;
+    --circle-border: #FF9F55;
+    --love-clr: #F2D7D5;
+    --sick-clr: #AED6F1;
+    --netral-clr: white;
+}
+
 body {
-    background-color: #474e5d;
+    background-color: var(--page-bg);
     font-family: Helvetica, sans-serif;
 }
 
@@ -24,7 +47,7 @@ body {
     content: '';
     position: absolute;
     width: 6px;
-    background-color: white;
+    background-color: var(--ruler-bg);
     top: 0;
     bottom: 0;
     left: 50%;
@@ -46,8 +69,8 @@ body {
     width: 25px;
     height: 25px;
     right: -17px;
-    background-color: white;
-    border: 4px solid #FF9F55;
+    background-color: var(--circle-core);
+    border: 4px solid var(--circle-border);
     top: 15px;
     border-radius: 50%;
     z-index: 1;
@@ -74,7 +97,7 @@ body {
     right: 30px;
     border: medium solid white;
     border-width: 10px 0 10px 10px;
-    border-color: transparent transparent transparent white;
+    border-color: transparent transparent transparent var(--love-clr);
 }
 
 /* Add arrows to the right container (pointing left) */
@@ -88,7 +111,7 @@ body {
     left: 30px;
     border: medium solid white;
     border-width: 10px 10px 10px 0;
-    border-color: transparent white transparent transparent;
+    border-color: transparent var(--sick-clr) transparent transparent;
 }
 
 /* Fix the circle for containers on the right side */
@@ -98,11 +121,18 @@ body {
 
 /* The actual content */
 .content {
-    padding: 20px 30px;
-    background-color: white;
+    padding: 8px 18px;
+    background-color: var(--netral-clr);
     position: relative;
     border-radius: 6px;
 }
+.love {
+    background-color: var(--love-clr);
+}
+.sick {
+    background-color: var(--sick-clr);
+}
+
 
 /* Media queries - Responsive timeline on screens less than 600px wide */
 @media screen and (max-width: 600px) {
@@ -110,31 +140,39 @@ body {
   .timeline::after {
     left: 31px;
   }
-  
+
   /* Full-width containers */
   .container {
     width: 100%;
     padding-left: 70px;
     padding-right: 25px;
   }
-  
+
   /* Make sure that all arrows are pointing leftwards */
   .container::before {
     left: 60px;
     border: medium solid white;
     border-width: 10px 10px 10px 0;
-    border-color: transparent white transparent transparent;
+  }
+
+  .right::before {
+    border-color: transparent var(--sick-clr) transparent transparent;
+  }
+
+  .left::before {
+    border-color: transparent var(--love-clr) transparent transparent;
   }
 
   /* Make sure all circles are at the same spot */
   .left::after, .right::after {
     left: 15px;
   }
-  
+
   /* Make all right containers behave like the left ones */
   .right {
     left: 0%;
   }
+
 }
 </style>
 </head>
